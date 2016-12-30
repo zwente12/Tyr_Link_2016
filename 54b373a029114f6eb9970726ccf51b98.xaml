@@ -1,0 +1,576 @@
+﻿<Activity mc:Ignorable="sads sap" x:Class="Subassembly" this:Subassembly.Side="[new EnumType(0, &quot;Right&quot;, &quot;Side&quot;)]" this:Subassembly.iLink="[new EnumType(309, &quot;OVD&quot;, &quot;eLink&quot;)]" this:Subassembly.iSurface="[new EnumType(10, &quot;Yes&quot;, &quot;Yes\No&quot;)]" this:Subassembly.iCheckGuardrail1="1.5" this:Subassembly.Chapter1="**********" this:Subassembly.iOffset="1" this:Subassembly.iElevation="0.5" this:Subassembly.Parameter21="0.5" this:Subassembly.Parameter20="0" this:Subassembly.tSurface="[new PreviewSurfaceTarget(&quot;tSurface&quot;, False, 1000, -1, -1000, -1)]" this:Subassembly.iGrade="[new Grade(-0.025)]" this:Subassembly.iSuE="[new EnumType(-1, &quot;None&quot;, &quot;eSuE&quot;)]" this:Subassembly.iSlope="[new Slope(0.5)]" this:Subassembly.Chapter2="**********" this:Subassembly.iDi0="0.1" this:Subassembly.il="[new EnumType(10, &quot;Yes&quot;, &quot;Yes\No&quot;)]" this:Subassembly.iNull="0" this:Subassembly.tOffset="[new PreviewOffsetTarget(&quot;tOffset&quot;, False, 0.703)]" this:Subassembly.tElevation="[new PreviewElevationTarget(&quot;tElevation&quot;, True, 0.797)]" this:Subassembly.Chapter3="**********" this:Subassembly.Parameter19="0" this:Subassembly.ipcIn="P1" this:Subassembly.ipcOu="P2" this:Subassembly.ilc="Top" this:Subassembly.icDaylight="Daylight" this:Subassembly.Parameter18="0" this:Subassembly.tRelElevation="[new PreviewElevationTarget(&quot;tRelElevation&quot;, True, 1)]" this:Subassembly.tNull="[new PreviewElevationTarget(&quot;tNull&quot;, False, 2)]"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:asa="clr-namespace:Autodesk.SubassemblyComposer.API;assembly=Subassembly.API"
+ xmlns:asa1="clr-namespace:Autodesk.SubassemblyComposer.API;assembly=Subassembly.WorkflowEngine"
+ xmlns:asa2="clr-namespace:Autodesk.SubassemblyComposer.ActivityLibrary;assembly=Subassembly.ActivityLibrary"
+ xmlns:asw="clr-namespace:Autodesk.SubassemblyComposer.WorkflowEngine;assembly=Subassembly.WorkflowEngine"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:mvc="clr-namespace:Microsoft.VisualBasic.CompilerServices;assembly=Microsoft.VisualBasic"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:s1="clr-namespace:System;assembly=System"
+ xmlns:s2="clr-namespace:System;assembly=System.Core"
+ xmlns:s3="clr-namespace:System;assembly=System.ServiceModel"
+ xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:this="clr-namespace:"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Geometry" Type="InOutArgument(asw:Geometry)" />
+    <x:Property Name="SubassemblyErrorCenter" Type="InOutArgument(asw:SubassemblyErrorCenter)" />
+    <x:Property Name="SubassemblyRunMode" Type="InOutArgument(asw:SubassemblyRunMode)" />
+    <x:Property Name="Side" Type="InArgument(asw:EnumType)" />
+    <x:Property Name="iLink" Type="InArgument(asw:EnumType)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Type of link" />
+        <asw:Description2Attribute Description="Typ av länk" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="iSurface" Type="InArgument(asw:EnumType)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Daylight" />
+        <asw:Description2Attribute Description="Avsluta vid yta ifall länk skär yta." />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="iCheckGuardrail1" Type="InArgument(x:Double)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Guardrail Height Limit" />
+        <asw:Description2Attribute Description="Bankhöjd för indikering att räcke behövs" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Chapter1" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <asw:DisplayName2Attribute DisplayName="********** Geometry ********************" />
+        <asw:Description2Attribute Description="********** Geometri ********************" />
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="iOffset" Type="InArgument(x:Double)">
+      <x:Property.Attributes>
+        <asw:Description2Attribute Description="Bredd" />
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Offset" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="iElevation" Type="InArgument(x:Double)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Elevation/Vertical Deflection" />
+        <asw:Description2Attribute Description="Absolut Z/Vertikal höjdskillnad" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Parameter21" Type="InArgument(x:Double)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Parameter20" Type="InArgument(x:Double)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="tSurface" Type="InArgument(asw:SurfaceTarget)">
+      <x:Property.Attributes>
+        <asw:DisplayName2Attribute DisplayName="Surface" />
+        <asw:EnabledFlag2Attribute EnabledFlag="False" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="iGrade" Type="InArgument(asw:Grade)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:Description2Attribute Description="Tvärfall" />
+        <asw:DisplayName2Attribute DisplayName="Grade" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="iSuE" Type="InArgument(asw:EnumType)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Superelevation" />
+        <asw:Description2Attribute Description="Skevningsberäkning" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="iSlope" Type="InArgument(asw:Slope)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:Description2Attribute Description="Släntlutning" />
+        <asw:DisplayName2Attribute DisplayName="Slope" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Chapter2" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <asw:DisplayName2Attribute DisplayName="********** Misc ********************" />
+        <asw:Description2Attribute Description="********** Övrigt ********************" />
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="iDi0" Type="InArgument(x:Double)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Offset value for 0" />
+        <asw:Description2Attribute Description="Teoretiskt avstånd för värdet 0" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="il" Type="InArgument(asw:EnumType)">
+      <x:Property.Attributes>
+        <asw:DisplayName2Attribute DisplayName="Create link" />
+        <asw:Description2Attribute Description="Skapa länk" />
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="iNull" Type="InArgument(x:Double)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Reference profile (null)" />
+        <asw:Description2Attribute Description="Referensprofil, nollnivå, gäller om profil inte skapats" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="tOffset" Type="InArgument(asw:OffsetTarget)">
+      <x:Property.Attributes>
+        <asw:DisplayName2Attribute DisplayName="Offset" />
+        <asw:EnabledFlag2Attribute EnabledFlag="False" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="tElevation" Type="InArgument(asw:ElevationTarget)">
+      <x:Property.Attributes>
+        <asw:DisplayName2Attribute DisplayName="Elevation" />
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Chapter3" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="********** Functioncodes ********************" />
+        <asw:Description2Attribute Description="********** Funktionskoder **********" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Parameter19" Type="InArgument(x:Double)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="ipcIn" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Inside Pointcode" />
+        <asw:Description2Attribute Description="Kod på startpunkten" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="ipcOu" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Outside Pointcode" />
+        <asw:Description2Attribute Description="Kod på slutpunkten" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="ilc" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Linkcode" />
+        <asw:Description2Attribute Description="Kod på länken" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="icDaylight" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+        <asw:DisplayName2Attribute DisplayName="Code Daylight" />
+        <asw:Description2Attribute Description="Kod markskärning" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Parameter18" Type="InArgument(x:Double)">
+      <x:Property.Attributes>
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="tRelElevation" Type="InArgument(asw:ElevationTarget)">
+      <x:Property.Attributes>
+        <asw:DisplayName2Attribute DisplayName="Relative elevation/slope" />
+        <asw:EnabledFlag2Attribute EnabledFlag="True" />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="tNull" Type="InArgument(asw:ElevationTarget)">
+      <x:Property.Attributes>
+        <asw:DisplayName2Attribute DisplayName="Reference profile (null)" />
+        <asw:EnabledFlag2Attribute EnabledFlag="False" />
+      </x:Property.Attributes>
+    </x:Property>
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>2092,1992</sap:VirtualizedContainerService.HintSize>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces serialized as XML namespaces</mva:VisualBasic.Settings>
+  <Flowchart sap:VirtualizedContainerService.HintSize="2052,1952" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:Double" Name="vSuE" />
+      <Variable x:TypeArguments="x:Double" Name="vSlope" />
+      <Variable x:TypeArguments="x:String" Name="vLink" />
+      <Variable x:TypeArguments="x:String" Name="vpcOu" />
+      <Variable x:TypeArguments="x:String" Name="vpcIn" />
+      <Variable x:TypeArguments="x:String" Name="vlc" />
+      <Variable x:TypeArguments="x:Double" Name="vOffset" />
+      <Variable x:TypeArguments="asw:EnumType" Name="vl" />
+      <Variable x:TypeArguments="x:String" Name="vcDaylight" />
+      <Variable x:TypeArguments="asw:EnumType" Name="vSurface" />
+      <Variable x:TypeArguments="x:Double" Name="vNull" />
+      <Variable x:TypeArguments="x:Double" Name="vElevation" />
+      <Variable x:TypeArguments="x:Double" Name="vDi0" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(41, &quot;AwayFromCrown&quot;)]" Modifiers="ReadOnly" Name="AwayFromCrown" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(1, &quot;Left&quot;)]" Modifiers="ReadOnly" Name="Left" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(20, &quot;LeftInsideLane&quot;)]" Modifiers="ReadOnly" Name="LeftInsideLane" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(21, &quot;LeftInsideShoulder&quot;)]" Modifiers="ReadOnly" Name="LeftInsideShoulder" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(22, &quot;LeftOutsideLane&quot;)]" Modifiers="ReadOnly" Name="LeftOutsideLane" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(23, &quot;LeftOutsideShoulder&quot;)]" Modifiers="ReadOnly" Name="LeftOutsideShoulder" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(301, &quot;LI&quot;)]" Modifiers="ReadOnly" Name="LI" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(302, &quot;LO&quot;)]" Modifiers="ReadOnly" Name="LO" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(11, &quot;No&quot;)]" Modifiers="ReadOnly" Name="No" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(-1, &quot;None&quot;)]" Modifiers="ReadOnly" Name="None" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(303, &quot;OE&quot;)]" Modifiers="ReadOnly" Name="OE" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(304, &quot;OppLI&quot;)]" Modifiers="ReadOnly" Name="OppLI" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(305, &quot;OppLO&quot;)]" Modifiers="ReadOnly" Name="OppLO" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(306, &quot;OppSI&quot;)]" Modifiers="ReadOnly" Name="OppSI" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(307, &quot;OppSO&quot;)]" Modifiers="ReadOnly" Name="OppSO" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(308, &quot;OS&quot;)]" Modifiers="ReadOnly" Name="OS" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(309, &quot;OVD&quot;)]" Modifiers="ReadOnly" Name="OVD" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(0, &quot;Right&quot;)]" Modifiers="ReadOnly" Name="Right" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(24, &quot;RightInsideLane&quot;)]" Modifiers="ReadOnly" Name="RightInsideLane" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(25, &quot;RightInsideShoulder&quot;)]" Modifiers="ReadOnly" Name="RightInsideShoulder" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(26, &quot;RightOutsideLane&quot;)]" Modifiers="ReadOnly" Name="RightOutsideLane" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(27, &quot;RightOutsideShoulder&quot;)]" Modifiers="ReadOnly" Name="RightOutsideShoulder" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(310, &quot;SI&quot;)]" Modifiers="ReadOnly" Name="SI" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(311, &quot;SO&quot;)]" Modifiers="ReadOnly" Name="SO" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(30, &quot;Supported&quot;)]" Modifiers="ReadOnly" Name="Supported" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(40, &quot;TowardsCrown&quot;)]" Modifiers="ReadOnly" Name="TowardsCrown" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(31, &quot;Unsupported&quot;)]" Modifiers="ReadOnly" Name="Unsupported" />
+      <Variable x:TypeArguments="asw:EnumType" Default="[new EnumType(10, &quot;Yes&quot;)]" Modifiers="ReadOnly" Name="Yes" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,124.5</av:PointCollection>
+        <x:Double x:Key="Width">2038.1532164284245</x:Double>
+        <x:Double x:Key="Height">1915.7998174062723</x:Double>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,124.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Sequence DisplayName="Variables" sap:VirtualizedContainerService.HintSize="200,51">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <asa2:InternalVariableDefine ActivityId="8" DisplayName="vLink &lt;String&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vLink" VariableType="String">
+            <asa2:InternalVariableDefine.DefaultValue>
+              <InArgument x:TypeArguments="x:String">[iLink.Value]</InArgument>
+            </asa2:InternalVariableDefine.DefaultValue>
+            <asa2:InternalVariableDefine.Variable>
+              <OutArgument x:TypeArguments="x:String">[vLink]</OutArgument>
+            </asa2:InternalVariableDefine.Variable>
+          </asa2:InternalVariableDefine>
+          <asa2:InternalVariableDefine ActivityId="9" DisplayName="vSurface &lt;Yes\No&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vSurface" VariableType="Yes\No">
+            <asa2:InternalVariableDefine.DefaultValue>
+              <InArgument x:TypeArguments="asw:EnumType">[iSurface]</InArgument>
+            </asa2:InternalVariableDefine.DefaultValue>
+            <asa2:InternalVariableDefine.Variable>
+              <OutArgument x:TypeArguments="asw:EnumType">[vSurface]</OutArgument>
+            </asa2:InternalVariableDefine.Variable>
+          </asa2:InternalVariableDefine>
+          <asa2:InternalVariableDefine ActivityId="28" DisplayName="vDi0 &lt;Double&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vDi0" VariableType="Double">
+            <asa2:InternalVariableDefine.DefaultValue>
+              <InArgument x:TypeArguments="x:Double">[iDi0]</InArgument>
+            </asa2:InternalVariableDefine.DefaultValue>
+            <asa2:InternalVariableDefine.Variable>
+              <OutArgument x:TypeArguments="x:Double">[vDi0]</OutArgument>
+            </asa2:InternalVariableDefine.Variable>
+          </asa2:InternalVariableDefine>
+          <asa2:InternalVariableDefine ActivityId="7" DisplayName="vOffset &lt;Double&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vOffset" VariableType="Double">
+            <asa2:InternalVariableDefine.DefaultValue>
+              <InArgument x:TypeArguments="x:Double" xml:space="preserve">[IF(tOffset.IsValid AND tOffset.Offset&gt;0,tOffset.Offset,
+iOffset)]</InArgument>
+            </asa2:InternalVariableDefine.DefaultValue>
+            <asa2:InternalVariableDefine.Variable>
+              <OutArgument x:TypeArguments="x:Double">[vOffset]</OutArgument>
+            </asa2:InternalVariableDefine.Variable>
+          </asa2:InternalVariableDefine>
+          <asa2:InternalVariableDefine ActivityId="25" DisplayName="vSlope &lt;Double&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vSlope" VariableType="Double">
+            <asa2:InternalVariableDefine.DefaultValue>
+              <InArgument x:TypeArguments="asw:Slope">[iSlope]</InArgument>
+            </asa2:InternalVariableDefine.DefaultValue>
+            <asa2:InternalVariableDefine.Variable>
+              <OutArgument x:TypeArguments="x:Double">[vSlope]</OutArgument>
+            </asa2:InternalVariableDefine.Variable>
+          </asa2:InternalVariableDefine>
+          <asa2:InternalVariableDefine ActivityId="5" DisplayName="vSuE &lt;Double&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vSuE" VariableType="Double">
+            <asa2:InternalVariableDefine.DefaultValue>
+              <InArgument x:TypeArguments="x:Double" xml:space="preserve">[IF(Side=Left AND SE.HasLeftLO AND iSuE=LO,SE.LeftLO,
+IF(Side=Left AND SE.HasLeftLI AND iSuE=LI,SE.LeftLI,
+IF(Side=Right AND SE.HasRightLO AND iSuE=LO,SE.RightLO,
+IF(Side=Right AND SE.HasRightLI AND iSuE=LI,SE.RightLI,
+IF(Side=Left AND SE.HasLeftSO AND iSuE=SO,SE.LeftSO,
+IF(Side=Left AND SE.HasLeftSI AND iSuE=SI,SE.LeftSI,
+IF(Side=Right AND SE.HasRightSO AND iSuE=SO,SE.RightSO,
+IF(Side=Right AND SE.HasRightSI AND iSuE=SI,SE.RightSI,
+IF(Side=Left AND SE.HasLeftLO AND iSuE=OppLO,-SE.RightLO,
+IF(Side=Left AND SE.HasLeftLI AND iSuE=OppLI,-SE.RightLI,
+IF(Side=Right AND SE.HasRightLO AND iSuE=OppLO,-SE.LeftLO,
+IF(Side=Right AND SE.HasRightLI AND iSuE=OppLI,-SE.LeftLI,
+IF(Side=Left AND SE.HasLeftSO AND iSuE=OppSO,-SE.RightSO,
+IF(Side=Left AND SE.HasLeftSI AND iSuE=OppSI,-SE.RightSI,
+IF(Side=Right AND SE.HasRightSO AND iSuE=OppSO,-SE.LeftSO,
+IF(Side=Right AND SE.HasRightSI AND iSuE=OppSI,-SE.LeftSI,
+CType​(vSlope,Double)))))))))))))))))]</InArgument>
+            </asa2:InternalVariableDefine.DefaultValue>
+            <asa2:InternalVariableDefine.Variable>
+              <OutArgument x:TypeArguments="x:Double">[vSuE]</OutArgument>
+            </asa2:InternalVariableDefine.Variable>
+          </asa2:InternalVariableDefine>
+          <asa2:InternalVariableDefine ActivityId="11" DisplayName="vl &lt;Yes\No&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vl" VariableType="Yes\No">
+            <asa2:InternalVariableDefine.DefaultValue>
+              <InArgument x:TypeArguments="asw:EnumType">[il]</InArgument>
+            </asa2:InternalVariableDefine.DefaultValue>
+            <asa2:InternalVariableDefine.Variable>
+              <OutArgument x:TypeArguments="asw:EnumType">[vl]</OutArgument>
+            </asa2:InternalVariableDefine.Variable>
+          </asa2:InternalVariableDefine>
+          <asa2:InternalVariableDefine ActivityId="23" DisplayName="vNull &lt;Double&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vNull" VariableType="Double">
+            <asa2:InternalVariableDefine.DefaultValue>
+              <InArgument x:TypeArguments="x:Double">[IF(tNull.IsValid,tNull.Elevation,iNull)]</InArgument>
+            </asa2:InternalVariableDefine.DefaultValue>
+            <asa2:InternalVariableDefine.Variable>
+              <OutArgument x:TypeArguments="x:Double">[vNull]</OutArgument>
+            </asa2:InternalVariableDefine.Variable>
+          </asa2:InternalVariableDefine>
+        </Sequence>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,204.5</av:Point>
+          <av:Size x:Key="ShapeSize">200,51</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,255.5 300,284.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="Function Variables" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <asa2:InternalVariableDefine ActivityId="12" DisplayName="vpcIn &lt;String&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vpcIn" VariableType="String">
+          <asa2:InternalVariableDefine.DefaultValue>
+            <InArgument x:TypeArguments="x:String">[ipcIn]</InArgument>
+          </asa2:InternalVariableDefine.DefaultValue>
+          <asa2:InternalVariableDefine.Variable>
+            <OutArgument x:TypeArguments="x:String">[vpcIn]</OutArgument>
+          </asa2:InternalVariableDefine.Variable>
+        </asa2:InternalVariableDefine>
+        <asa2:InternalVariableDefine ActivityId="13" DisplayName="vpcOu &lt;String&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vpcOu" VariableType="String">
+          <asa2:InternalVariableDefine.DefaultValue>
+            <InArgument x:TypeArguments="x:String">[ipcOu]</InArgument>
+          </asa2:InternalVariableDefine.DefaultValue>
+          <asa2:InternalVariableDefine.Variable>
+            <OutArgument x:TypeArguments="x:String">[vpcOu]</OutArgument>
+          </asa2:InternalVariableDefine.Variable>
+        </asa2:InternalVariableDefine>
+        <asa2:InternalVariableDefine ActivityId="14" DisplayName="vlc &lt;String&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vlc" VariableType="String">
+          <asa2:InternalVariableDefine.DefaultValue>
+            <InArgument x:TypeArguments="x:String">[ilc]</InArgument>
+          </asa2:InternalVariableDefine.DefaultValue>
+          <asa2:InternalVariableDefine.Variable>
+            <OutArgument x:TypeArguments="x:String">[vlc]</OutArgument>
+          </asa2:InternalVariableDefine.Variable>
+        </asa2:InternalVariableDefine>
+        <asa2:InternalVariableDefine ActivityId="20" DisplayName="vcDaylight &lt;String&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vcDaylight" VariableType="String">
+          <asa2:InternalVariableDefine.DefaultValue>
+            <InArgument x:TypeArguments="x:String">[icDaylight]</InArgument>
+          </asa2:InternalVariableDefine.DefaultValue>
+          <asa2:InternalVariableDefine.Variable>
+            <OutArgument x:TypeArguments="x:String">[vcDaylight]</OutArgument>
+          </asa2:InternalVariableDefine.Variable>
+        </asa2:InternalVariableDefine>
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,284.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,51</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,335.5 300,426.5</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Pre" sap:VirtualizedContainerService.HintSize="200,51">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <asa2:CreatePoint AutoLinkCodes="{x:Null}" AutoLinkGeometryName="{x:Null}" FromPoint="{x:Null}" ActivityId="3" ApplyAOR="False" AutoLink="False" DisplayName="P101" Geometry="[Geometry]" sap:VirtualizedContainerService.HintSize="200,22" PointNumber="P101" Positioning="DeltaXAndDeltaY" ShowErrors="True" Side="[Side]" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]">
+              <asa2:CreatePoint.Arguments>
+                <InArgument x:TypeArguments="x:Double" x:Key="DeltaX1">0</InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="DeltaY1">0</InArgument>
+              </asa2:CreatePoint.Arguments>
+              <asa2:CreatePoint.PointCodes>
+                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">[vpcIn]</InArgument>
+                </scg:List>
+              </asa2:CreatePoint.PointCodes>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </asa2:CreatePoint>
+            <asa2:InternalVariableDefine ActivityId="24" DisplayName="vElevation &lt;Double&gt;" sap:VirtualizedContainerService.HintSize="200,22" OldVariableName="" ShowErrors="True" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]" VariableName="vElevation" VariableType="Double">
+              <asa2:InternalVariableDefine.DefaultValue>
+                <InArgument x:TypeArguments="x:Double" xml:space="preserve">[IF(iLink=OE AND tElevation.IsValid,tElevation.Elevation,
+IF(iLink=OVD AND tRelElevation.IsValid,tRelElevation.Elevation-vNull,
+iElevation))]</InArgument>
+              </asa2:InternalVariableDefine.DefaultValue>
+              <asa2:InternalVariableDefine.Variable>
+                <OutArgument x:TypeArguments="x:Double">[vElevation]</OutArgument>
+              </asa2:InternalVariableDefine.Variable>
+            </asa2:InternalVariableDefine>
+            <asa2:CreateAuxPoint AutoLinkCodes="{x:Null}" AutoLinkGeometryName="{x:Null}" PointCodes="{x:Null}" ActivityId="16" ApplyAOR="False" AutoLink="False" DisplayName="AP102" FromPoint="P101" Geometry="[Geometry]" sap:VirtualizedContainerService.HintSize="200,22" PointNumber="AP102" Positioning="DeltaXAndDeltaY" ShowErrors="True" Side="[Side]" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]">
+              <asa2:CreateAuxPoint.Arguments>
+                <InArgument x:TypeArguments="x:Double" x:Key="DeltaX1">[vOffset]</InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="DeltaY1">[vElevation]</InArgument>
+              </asa2:CreateAuxPoint.Arguments>
+            </asa2:CreateAuxPoint>
+            <asa2:CreateAuxPoint AutoLinkCodes="{x:Null}" AutoLinkGeometryName="{x:Null}" PointCodes="{x:Null}" ActivityId="17" ApplyAOR="False" AutoLink="False" DisplayName="AP103" FromPoint="P101" Geometry="[Geometry]" sap:VirtualizedContainerService.HintSize="200,22" PointNumber="AP103" Positioning="SlopeToSurface" ShowErrors="True" Side="[Side]" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]">
+              <asa2:CreateAuxPoint.Arguments>
+                <InArgument x:TypeArguments="x:Double" x:Key="Slope3">[P101.SlopeTo("AP102") ]</InArgument>
+                <InArgument x:TypeArguments="x:Boolean" x:Key="ReverseSlopeDirection3">False</InArgument>
+                <InArgument x:TypeArguments="asw:SurfaceTarget" x:Key="SurfaceTarget3">[tSurface]</InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="DeltaXForLayout3">5</InArgument>
+                <InArgument x:TypeArguments="x:Boolean" x:Key="ShowErrors">False</InArgument>
+              </asa2:CreateAuxPoint.Arguments>
+            </asa2:CreateAuxPoint>
+          </Sequence>
+          <FlowStep.Next>
+            <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID2" Expression="[IF(vLink=&quot;OE&quot;,&quot;OE&quot;,&#xA;IF(vLink=&quot;OVD&quot;,&quot;OVD&quot;,&#xA;&quot;0&quot;))]" sap:VirtualizedContainerService.HintSize="70,87">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <av:Point x:Key="ShapeLocation">265,426.5</av:Point>
+                  <av:Size x:Key="ShapeSize">70,87</av:Size>
+                  <av:PointCollection x:Key="OEConnector">282.5,426.5 282.5,400 580,400 580,460 610,460</av:PointCollection>
+                  <av:PointCollection x:Key="OVDConnector">265,448.25 235,448.25 235,396.5 580,396.5 580,460 610,460</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <FlowStep x:Key="OE" x:Name="__ReferenceID1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">610,434.5</av:Point>
+                    <av:Size x:Key="ShapeSize">200,51</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">710,485.5 710,515.5 840,515.5 840,1686.5</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence DisplayName="OE,OVD" sap:VirtualizedContainerService.HintSize="200,51">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <asa2:CreatePoint AutoLinkCodes="{x:Null}" AutoLinkGeometryName="{x:Null}" ActivityId="18" ApplyAOR="False" AutoLink="False" DisplayName="P102" FromPoint="AP102" Geometry="[Geometry]" sap:VirtualizedContainerService.HintSize="200,22" PointNumber="P102" Positioning="DeltaXAndDeltaY" ShowErrors="True" Side="[Side]" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]">
+                    <asa2:CreatePoint.Arguments>
+                      <InArgument x:TypeArguments="x:Double" x:Key="DeltaX1">0</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="DeltaY1">0</InArgument>
+                    </asa2:CreatePoint.Arguments>
+                    <asa2:CreatePoint.PointCodes>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                        <InArgument x:TypeArguments="x:String">[vpcOu]</InArgument>
+                      </scg:List>
+                    </asa2:CreatePoint.PointCodes>
+                  </asa2:CreatePoint>
+                </Sequence>
+                <FlowStep.Next>
+                  <FlowDecision x:Name="__ReferenceID5" Condition="[vl=Yes]" sap:VirtualizedContainerService.HintSize="70,87">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <av:Point x:Key="ShapeLocation">805,1686.5</av:Point>
+                        <av:Size x:Key="ShapeSize">70,87</av:Size>
+                        <av:PointCollection x:Key="TrueConnector">805,1730 740,1730 740,1814.5</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <FlowDecision.True>
+                      <FlowStep x:Name="__ReferenceID4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">640,1814.5</av:Point>
+                            <av:Size x:Key="ShapeSize">200,51</av:Size>
+                            <av:PointCollection x:Key="ConnectorLocation">640,1840 610,1840 610,1784.5 640,1784.5 640,1074.5 430,1074.5 430,130 400,130</av:PointCollection>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Sequence DisplayName="Link" sap:VirtualizedContainerService.HintSize="200,51">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <asa2:CreateLink ActivityId="19" ApplyAOR="False" DisplayName="L102" EndPoint="P102" Geometry="[Geometry]" sap:VirtualizedContainerService.HintSize="200,22" IsEnabled="True" LinkNumber="L102" ShowErrors="True" StartPoint="P101" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]">
+                            <asa2:CreateLink.LinkCodes>
+                              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                                <InArgument x:TypeArguments="x:String">[vlc]</InArgument>
+                              </scg:List>
+                            </asa2:CreateLink.LinkCodes>
+                          </asa2:CreateLink>
+                        </Sequence>
+                      </FlowStep>
+                    </FlowDecision.True>
+                  </FlowDecision>
+                </FlowStep.Next>
+              </FlowStep>
+              <x:Reference>__ReferenceID1<x:Key>OVD</x:Key></x:Reference>
+            </FlowSwitch>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">380,734.5</av:Point>
+          <av:Size x:Key="ShapeSize">200,51</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">850,495.5 850,1696.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="OVD" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <asa2:CreatePoint AutoLinkCodes="{x:Null}" AutoLinkGeometryName="{x:Null}" ActivityId="26" ApplyAOR="False" AutoLink="False" DisplayName="P102" FromPoint="AP102" Geometry="[Geometry]" sap:VirtualizedContainerService.HintSize="200,22" PointNumber="P102" Positioning="DeltaXAndDeltaY" ShowErrors="True" Side="[Side]" SubassemblyErrorCenter="[SubassemblyErrorCenter]" SubassemblyRunMode="[SubassemblyRunMode]">
+          <asa2:CreatePoint.Arguments>
+            <InArgument x:TypeArguments="x:Double" x:Key="DeltaX1">0</InArgument>
+            <InArgument x:TypeArguments="x:Double" x:Key="DeltaY1">0</InArgument>
+          </asa2:CreatePoint.Arguments>
+          <asa2:CreatePoint.PointCodes>
+            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+              <InArgument x:TypeArguments="x:String">[vpcOu]</InArgument>
+            </scg:List>
+          </asa2:CreatePoint.PointCodes>
+        </asa2:CreatePoint>
+      </Sequence>
+    </FlowStep>
+  </Flowchart>
+</Activity>

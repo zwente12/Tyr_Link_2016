@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<EnumData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EnumDatas>
+    <Groups>
+      <EnumGroup Name="eSuE">
+        <Items>
+          <EnumItem Name="None" DisplayName="None" Key="-1" />
+          <EnumItem Name="LO" DisplayName="Outside Lane" Key="302" />
+          <EnumItem Name="LI" DisplayName="Inside Lane" Key="301" />
+          <EnumItem Name="SO" DisplayName="Outside Shoulder" Key="311" />
+          <EnumItem Name="SI" DisplayName="Inside Shoulder" Key="310" />
+          <EnumItem Name="OppLO" DisplayName="Opposite Side Outside Lane" Key="305" />
+          <EnumItem Name="OppLI" DisplayName="Opposite Side Inside Lane" Key="304" />
+          <EnumItem Name="OppSO" DisplayName="Opposite Side Outside Shoulder" Key="307" />
+          <EnumItem Name="OppSI" DisplayName="Opposite Side Inside Shoulder" Key="306" />
+        </Items>
+      </EnumGroup>
+      <EnumGroup Name="eLink">
+        <Items>
+          <EnumItem Name="OE" DisplayName="Offset and Elevation" Key="303" />
+          <EnumItem Name="OVD" DisplayName="Offset and Vertical Deflection" Key="309" />
+          <EnumItem Name="OS" DisplayName="Offset and Slope" Key="308" />
+        </Items>
+      </EnumGroup>
+    </Groups>
+    <DefinedVariables>
+      <string>vSuE</string>
+      <string>vSlope</string>
+      <string>pcInd_copy</string>
+      <string>vLink</string>
+      <string>vpcOu</string>
+      <string>vpcIn</string>
+      <string>vlc</string>
+      <string>vOffset</string>
+      <string>vl</string>
+      <string>vcDaylight</string>
+      <string>vSurface</string>
+      <string>vNull</string>
+      <string>vElevation</string>
+      <string>vDi0</string>
+    </DefinedVariables>
+  </EnumDatas>
+</EnumData>

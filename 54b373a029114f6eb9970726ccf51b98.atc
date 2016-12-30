@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<Category xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ItemID idValue="{8209c566-6e5a-4862-8c34-95c6da9f1799}" />
+  <Properties>
+    <ItemName>Category1</ItemName>
+    <Images>
+      <Image cx="93" cy="123" />
+    </Images>
+  </Properties>
+  <CustomData />
+  <Source />
+  <Palettes />
+  <Packages />
+  <Tools>
+    <Tool Name="Tyr_Link_2016">
+      <ItemID idValue="{28b6c98a-4cab-4863-86db-620cf902ac71}" />
+      <Properties>
+        <ItemName>Tyr_Link_2016</ItemName>
+        <Images>
+          <Image cx="64" cy="64" src="C:\Users\mss\AppData\Local\Temp\C3DSA\Tyr_Link_v00a.pkt.34f7d3ab2b13406ab846f7229972c771\Tyrens.png" />
+        </Images>
+        <Description>Multifunctional Link, 2016-12-30</Description>
+        <Help>
+          <HelpFile />
+          <HelpCommand />
+          <HelpData />
+        </Help>
+      </Properties>
+      <Source />
+      <StockToolRef idValue="{7F55AAC0-0256-48D7-BFA5-914702663FDE}" />
+      <Data>
+        <AeccDbSubassembly>
+          <GeometryGenerateMode>UseDotNet</GeometryGenerateMode>
+          <DotNetClass Assembly="54b373a029114f6eb9970726ccf51b98.dll">Subassembly.Tyr_Link_2016</DotNetClass>
+          <Params>
+            <Side DataType="long" TypeInfo="16" DisplayName="Side" Description="Side">0<Enum><Left DisplayName="Left">1</Left><Right DisplayName="Right">0</Right></Enum></Side>
+            <iLink DataType="long" TypeInfo="16" DisplayName="Type of link" Description="Typ av länk">309<Enum><OE DisplayName="Offset and Elevation">303</OE><OVD DisplayName="Offset and Vertical Deflection">309</OVD><OS DisplayName="Offset and Slope">308</OS></Enum></iLink>
+            <iSurface DataType="long" TypeInfo="16" DisplayName="Daylight" Description="Avsluta vid yta ifall länk skär yta.">10<Enum><Yes DisplayName="Yes">10</Yes><No DisplayName="No">11</No></Enum></iSurface>
+            <iCheckGuardrail1 DataType="double" TypeInfo="16" DisplayName="Guardrail Height Limit" Description="Bankhöjd för indikering att räcke behövs">1.5</iCheckGuardrail1>
+            <Chapter1 DataType="string" TypeInfo="16" DisplayName="********** Geometry ********************" Description="********** Geometri ********************">**********</Chapter1>
+            <iOffset DataType="double" TypeInfo="16" DisplayName="Offset" Description="Bredd">1</iOffset>
+            <iElevation DataType="double" TypeInfo="16" DisplayName="Elevation/Vertical Deflection" Description="Absolut Z/Vertikal höjdskillnad">0.5</iElevation>
+            <Parameter21 DataType="double" TypeInfo="16" DisplayName="Parameter21" Description="Parameter21">0.5</Parameter21>
+            <Parameter20 DataType="double" TypeInfo="16" DisplayName="Parameter20" Description="Parameter20">0</Parameter20>
+            <iGrade DataType="double" TypeInfo="9" DisplayName="Grade" Description="Tvärfall">-0.025</iGrade>
+            <iSuE DataType="long" TypeInfo="16" DisplayName="Superelevation" Description="Skevningsberäkning">-1<Enum><None DisplayName="None">-1</None><LO DisplayName="Outside Lane">302</LO><LI DisplayName="Inside Lane">301</LI><SO DisplayName="Outside Shoulder">311</SO><SI DisplayName="Inside Shoulder">310</SI><OppLO DisplayName="Opposite Side Outside Lane">305</OppLO><OppLI DisplayName="Opposite Side Inside Lane">304</OppLI><OppSO DisplayName="Opposite Side Outside Shoulder">307</OppSO><OppSI DisplayName="Opposite Side Inside Shoulder">306</OppSI></Enum></iSuE>
+            <iSlope DataType="double" TypeInfo="10" DisplayName="Slope" Description="Släntlutning">0.5</iSlope>
+            <Chapter2 DataType="string" TypeInfo="16" DisplayName="********** Misc ********************" Description="********** Övrigt ********************">**********</Chapter2>
+            <iDi0 DataType="double" TypeInfo="16" DisplayName="Offset value for 0" Description="Teoretiskt avstånd för värdet 0">0.1</iDi0>
+            <il DataType="long" TypeInfo="16" DisplayName="Create link" Description="Skapa länk">10<Enum><Yes DisplayName="Yes">10</Yes><No DisplayName="No">11</No></Enum></il>
+            <iNull DataType="double" TypeInfo="16" DisplayName="Reference profile (null)" Description="Referensprofil, nollnivå, gäller om profil inte skapats">0</iNull>
+            <Chapter3 DataType="string" TypeInfo="16" DisplayName="********** Functioncodes ********************" Description="********** Funktionskoder **********">**********</Chapter3>
+            <Parameter19 DataType="double" TypeInfo="16" DisplayName="Parameter19" Description="Parameter19">0</Parameter19>
+            <ipcIn DataType="string" TypeInfo="16" DisplayName="Inside Pointcode" Description="Kod på startpunkten">P1</ipcIn>
+            <ipcOu DataType="string" TypeInfo="16" DisplayName="Outside Pointcode" Description="Kod på slutpunkten">P2</ipcOu>
+            <ilc DataType="string" TypeInfo="16" DisplayName="Linkcode" Description="Kod på länken">Top</ilc>
+            <icDaylight DataType="string" TypeInfo="16" DisplayName="Code Daylight" Description="Kod markskärning">Daylight</icDaylight>
+            <Parameter18 DataType="double" TypeInfo="16" DisplayName="Parameter18" Description="Parameter18">0</Parameter18>
+          </Params>
+        </AeccDbSubassembly>
+        <Units>m</Units>
+      </Data>
+    </Tool>
+  </Tools>
+  <StockTools />
+</Category>
